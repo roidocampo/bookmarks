@@ -8,7 +8,9 @@ TARGET_PNGS = $(addsuffix _150x150.png,$(join ${DIRS},${NAMES}))
 TARGET_CSSS = $(addsuffix .css,$(join ${DIRS},${NAMES}))
 
 index.html: roimarks.source.html images/images.css
-	./process_includes.sh images/images.css < roimarks.source.html > index.html
+	./process_includes.sh images/images.css icon/icon.html \
+	    < roimarks.source.html \
+	    > index.html
 
 images/images.css: ${TARGET_CSSS} images/gen_b64.py
 	cat ${TARGET_CSSS} > '$@'
